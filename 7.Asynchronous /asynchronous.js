@@ -57,25 +57,89 @@
 
 // Promise ====================================
 
-const hasMeeting = true;
+// const hasMeeting = false;
 
-const meeting = new Promise((resolve, reject) => {
-  if (!hasMeeting) {
-    const meetingDetails = {
-      name: "Maruf Bellah",
-      location: "Google Meet",
-      time: "10.00 PM",
-    }
-    resolve(meetingDetails)
-  } else {
-    reject(new Error("meeting already scheduled! "))
-  }
+// const meeting = new Promise((resolve, reject) => {
+//   if (!hasMeeting) {
+//     const meetingDetails = {
+//       name: "Maruf Bellah",
+//       location: "Google Meet",
+//       time: "10.00 PM",
+//     }
+//     resolve(meetingDetails)
+//   } else {
+//     reject(new Error("meeting already scheduled! "))
+//   }
+// });
+
+
+// const addToCalender = (meetingDetails) => {
+//   return new Promise((resolve, reject) => {
+//     const calender = `${meetingDetails.name} has been scheduled on ${meetingDetails.location} at ${meetingDetails.time}`;
+//     resolve(calender)
+//   })
+// }
+
+// const addToCalender = (meetingDetails) => {
+
+//     const calender = `${meetingDetails.name} has been scheduled on ${meetingDetails.location} at ${meetingDetails.time}`;
+//     return Promise.resolve(calender);
+
+// };
+
+
+// meeting
+//   .then(addToCalender)
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err.message);
+//   });
+// console.log('hello bro');
+  
+
+const promise1 = Promise.resolve(`Promise 1 resolved`);
+
+const promise2 =  new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(`Promise 2 resolved`)
+  });
 });
 
-meeting
-  .then((res) => {
-  console.log(res);
-  })
-  .catch((err) => {
-    console.log(err.message);
-  })
+
+// promise1.then((res) => console.log(res))
+// promise2.then((res)=> console.log(res))
+
+// Promise.all([promise1, promise2]).then((res) => {
+//   console.log(res);
+// }) // all e sob result dekhabe
+
+
+
+// Promise.race([promise1, promise2]).then((res) => {
+//   console.log(res);
+// }); // race e jeta age ashbe takei dekhabe 
+
+
+
+
+// async-await function=============================
+
+
+function resolveAfter2Seconds() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('Maruf Bellah Resolve')
+    }, 2000)
+  });
+}
+
+
+async function asyncCall() {
+  console.log('Calling the fucntion');
+  const result = await resolveAfter2Seconds();
+  console.log(result);
+}
+
+asyncCall()
