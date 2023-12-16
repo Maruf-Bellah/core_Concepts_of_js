@@ -29,28 +29,53 @@
 
 // CallBack function ==============================
 
-const takeOrder = (customer, CallBack) => {
-  console.log(`take order for ${customer}`);
-  CallBack(customer)
-};
+// const takeOrder = (customer, CallBack) => {
+//   console.log(`take order for ${customer}`);
+//   CallBack(customer)
+// };
 
-const processOrder = (customer, CallBack) => {
-  console.log(`processing order for ${customer}`);
+// const processOrder = (customer, CallBack) => {
+//   console.log(`processing order for ${customer}`);
 
-  setTimeout(() => {
-    console.log(`cooking completed`);
-    console.log(`order processed for ${customer}`);
-    CallBack(customer)
-  }, 3000);
-};
+//   setTimeout(() => {
+//     console.log(`cooking completed`);
+//     console.log(`order processed for ${customer}`);
+//     CallBack(customer)
+//   }, 3000);
+// };
 
-const completeOrder = (customer) => {
-  console.log(`completed order for ${customer}`);
-};
+// const completeOrder = (customer) => {
+//   console.log(`completed order for ${customer}`);
+// };
 
-takeOrder('maruf bellah', (customer) => {
-  processOrder(customer, (customer) => {
-    completeOrder(customer)
-  })
+// takeOrder('maruf bellah', (customer) => {
+//   processOrder(customer, (customer) => {
+//     completeOrder(customer)
+//   })
   
-})
+// })
+
+// Promise ====================================
+
+const hasMeeting = true;
+
+const meeting = new Promise((resolve, reject) => {
+  if (!hasMeeting) {
+    const meetingDetails = {
+      name: "Maruf Bellah",
+      location: "Google Meet",
+      time: "10.00 PM",
+    }
+    resolve(meetingDetails)
+  } else {
+    reject(new Error("meeting already scheduled! "))
+  }
+});
+
+meeting
+  .then((res) => {
+  console.log(res);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
