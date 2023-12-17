@@ -16,3 +16,27 @@
   let b = 20;
   console.log(a + b);
 })();
+
+
+((a,b) => {
+ 
+  console.log(a + b);
+})(20,30);
+
+let paintColor = "white";
+const paint = (() => {
+  return {
+    changeColorToBlue: () => {
+      paintColor: "Blue";
+      return paintColor;
+    },
+    changeColorToGreen: () => {
+      return {
+        paintColor: "Green",
+      };
+    },
+  };
+})();
+console.log(paint.changeColorToGreen());
+
+
